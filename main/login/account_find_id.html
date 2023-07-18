@@ -40,6 +40,11 @@
 
         }
     </style>
+    <script>
+        function emailalert() {
+            window.alert("이메일 전송이 완료되었습니다.");
+        }
+    </script>
 </head>
 <body>
     <div style="width: 500px;align: center; margin-top:17px">
@@ -49,7 +54,7 @@
                     <button>ID 찾기</button>
                 </td>
                 <td class="btn_pw" >
-                    <button>비밀번호 찾기</button>
+                    <button onclick="location.href='account_find_pw.html'">비밀번호 찾기</button>
                 </td>
                 <td style="border-bottom: 1px solid #DCDCDC"></td>
             </tr>
@@ -62,7 +67,19 @@
             <tr>
                 <td>
                     <div style="width: 580px;height: 160px;background-color: #f7f7f7">
-
+                        <table style="width: 500px;height: 100px; margin-left: 30px;padding-top: 40px">
+                            <td style="width: 120px;height: 30px;font-size: large">
+                                <p align="right">이메일 입력:</p>
+                            </td>
+                            <td>
+                                <input type="text" id = "userEmail" name= "userEmail" placeholder="email"
+                                       style="width: 200px;height: 30px;" align="right">
+                            </td>
+                            <td>
+                                <button onclick="emailalert();" style="width: 130px;height: 35px;font-size: medium"
+                                        align="left">이메일 인증</button>
+                            </td>
+                        </table>
                     </div>
                 </td>
             </tr>
