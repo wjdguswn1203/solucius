@@ -42,7 +42,11 @@
     </style>
     <script>
         function emailalert() {
-            window.alert("이메일 전송이 완료되었습니다.");
+            window.alert("해당 이메일로 인증번호가 전송되었습니다.");
+            let x = document.getElementById("text");
+            x.innerText="인증번호 입력:";
+
+
         }
     </script>
 </head>
@@ -69,11 +73,11 @@
                     <div style="width: 580px;height: 160px;background-color: #f7f7f7">
                         <table style="width: 500px;height: 100px; margin-left: 30px;padding-top: 40px">
                             <td style="width: 120px;height: 30px;font-size: large">
-                                <p align="right">이메일 입력:</p>
+                                <p align="right" id="text">이메일 입력:&nbsp;</p>
                             </td>
                             <td>
                                 <input type="text" id = "userEmail" name= "userEmail" placeholder="email"
-                                       style="width: 200px;height: 30px;" align="right">
+                                       style="width: 200px;height: 30px;padding-left: 10px" align="right">
                             </td>
                             <td>
                                 <button onclick="emailalert();" style="width: 130px;height: 35px;font-size: medium"

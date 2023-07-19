@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <title>Solucius account find</title>
     <style>
-        .btn_pw{
+        .btn_id{
             width: 150px;
             height: 50px;
             border-top: 1px solid #DCDCDC;
@@ -13,7 +13,7 @@
             border-right: 1px solid #DCDCDC;
 
         }
-        .btn_pw button {
+        .btn_id button {
             color: #9049c6;
             width: 150px;
             height: 50px;
@@ -22,14 +22,14 @@
             background-color: white;
 
         }
-        .btn_id{
+        .btn_pw{
             width: 150px;
             height: 50px;
             border: 1px solid #DCDCDC;
 
 
         }
-        .btn_id button {
+        .btn_pw button {
             width: 150px;
             height: 50px;
             font-size: large;
@@ -41,8 +41,8 @@
         }
     </style>
     <script>
-        function emailalert() {
-            window.alert("이메일 전송이 완료되었습니다.");
+        function close() {
+            window.close();
         }
     </script>
 </head>
@@ -51,7 +51,7 @@
     <table style="width: 580px">
         <tr>
             <td class="btn_id">
-                <button onclick="location.href='account_find_id.html'">ID 찾기</button>
+                <button>ID 찾기</button>
             </td>
             <td class="btn_pw" >
                 <button onclick="location.href='account_find_pw.html'">비밀번호 찾기</button>
@@ -60,7 +60,7 @@
         </tr>
     </table>
     <div style="margin-top: 40px;margin-left: 10px;">
-        본인 ID를 입력해주세요.
+        현재 존재하는 유저님의 아이디입니다.
     </div>
     <br>
     <table>
@@ -68,17 +68,13 @@
             <td>
                 <div style="width: 580px;height: 160px;background-color: #f7f7f7">
                     <table style="width: 500px;height: 100px; margin-left: 30px;padding-top: 40px">
-                        <td style="width: 120px;height: 30px;font-size: large">
-                            <p align="right">아이디 입력:</p>
-                        </td>
-                        <td>
-                            <input type="text" id = "userId" name= "userId" placeholder="id"
-                                   style="width: 200px;height: 30px;padding-left: 10px" align="right">
-                        </td>
-                        <td>
-                            <button onclick="emailalert();" style="width: 130px;height: 35px;font-size: medium"
-                                    align="left">비밀번호 찾기</button>
-                        </td>
+                        <tr style="width: 120px;height: 30px;font-size: large">
+                            <p align="right">아이디: abc1234 입니다.</p>
+                        </tr>
+
+                        <tr>
+                            <button onclick="close();" style="width: 130px;height: 35px;font-size: medium">로그인</button>
+                        </tr>
                     </table>
                 </div>
             </td>
