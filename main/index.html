@@ -6,6 +6,34 @@
     <title>Solucius Login</title>
     <link rel="stylesheet" href="css/login_style.css">
     <!--  폰트 생각 중  -->
+
+    <script>
+        function check() {
+            let user_id = document.getElementById("userId").value;
+            let user_pw = document.getElementById("userPw").value;
+
+            var target;
+            if (user_id == null || user_id === "") {
+                alert("아이디를 입력해주세요.");
+            } else {
+                if (user_pw == null) {
+                    alert("비밀번호를 입력해주세요.");
+                } else {
+                    if (user_id === "wjdguswn1203") {
+                        <!--  페이지 이동 오류  -->
+                        if (user_pw === "011203") {
+                            // alert("정현주님 환영합니다.");
+                            location.href = 'solution/main.html';
+                        } else {
+                            alert("비밀번호가 틀렸습니다.")
+                        }
+                    } else {
+                        alert("존재하지 않는 아이디입니다.");
+                    }
+                }
+            }
+        }
+    </script>
 </head>
 <body>
 <div class="login_div" align="center">
@@ -15,22 +43,22 @@
     <div class="login_main_div">
     <p style="font-size: 25px; color: #6a33a1">Login</p>
     <table>
-        <form action="solution/main.html" method="post">
+        <form>
         <tr>
             <td>
                     <div class="login_input">
-                        <input type="text" id = "userId" name= "userId" placeholder="id">
+                        <input type="text" id = "userId" placeholder="id">
                     </div>
                     <br>
                     <div class="login_input">
-                        <input type="password" id ="userPw" name= "userPw" placeholder="password">
+                        <input type="password" id ="userPw" placeholder="password">
                     </div>
             </td>
         </tr>
         <tr>
             <td>
                 <div class="login_input">
-                            <button type="submit">
+                            <button onclick="check();">
                                 <font style="color: white; font-weight: bold">
                                     Login
                                 </font>
