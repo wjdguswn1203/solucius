@@ -6,6 +6,38 @@
     <meta charset="UTF-8">
     <title>Solucius Join</title>
     <link rel="stylesheet" href="../css/login_style.css">
+
+    <script>
+        function id_check() {
+            var checkId = document.getElementById("inputId").value;
+
+            if(checkId === "wjdguswn1203") {
+                alert("이미 가입된 아이디입니다.");
+            }
+            else if (checkId === "") {
+                alert("아이디를 입력해주세요.")
+            }
+            else {
+                alert("사용 가능한 아이디입니다.");
+            }
+        }
+
+        function email_check() {
+            const checkEmail = document.getElementById("userEmail").value;
+
+            if(checkEmail === "wjdguswn1203") {
+                alert("이미 가입된 이메일입니다.");
+            }
+            else if (checkEmail === "") {
+                alert("이메일을 입력해주세요.")
+            }
+            else {
+                // 팝업창 만들기
+                window.open("emailpopup.html");
+            }
+        }
+    </script>
+
 </head>
 <body>
 <div class="login_div" align="center">
@@ -17,22 +49,20 @@
     <div class="login_main_div">
         <p style="font-size: 25px; color: #6a33a1">회원가입</p>
         <!-- <form action="/login" method="post"> 따로 submit 받아야할듯!-->
-        <!-- 중앙정렬 이슈 !
-             중복검사 추가 필요, 이메일 인증 필요 -->
 
         <!-- 정보입력 테이블-->
-        <table border="1">
+        <table>
             <tr>
                 <td>
                     <div style="width: 90px;text-align: center">아이디</div>
                 </td>
                 <td>
                     <div class="join_input">
-                        <input type="text" id = "userId" name= "userId" placeholder="id">
+                        <input type="text" id = "inputId" placeholder="id">
                     </div>
                 </td>
                 <td>
-                    <button class="id_duplicate_check" onclick="location.href='../solution/main.html'">
+                    <button class="id_duplicate_check" onclick="id_check();">
                         <font style="color: white; font-weight: bold">
                             중복확인
                         </font>
@@ -67,7 +97,13 @@
                     <div class="join_input">
                         <input type="text" id = "userEmail" name= "userEmail" placeholder="email">
                     </div>
-                </td>
+                </td>                <td>
+                <button class="id_duplicate_check" onclick="email_check();">
+                    <font style="color: white; font-weight: bold">
+                        이메일인증
+                    </font>
+                </button>
+            </td>
             </tr>
         </table>
 
@@ -83,6 +119,7 @@
                         가입
                     </font>
                 </button>
+
         </div>
         </div>
 </div>
