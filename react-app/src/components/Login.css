@@ -77,3 +77,45 @@ body {
     margin-left: 30px;
     width: 250px;
 }
+.login-go {
+    cursor: pointer;
+    color: #0f49a8;
+    font-weight: bold;
+    text-decoration: underline;
+ }
+
+/* 아이디,비밀번호 찾기 css */
+.btn_id{
+    width: 150px;
+    height: 50px;
+    border-top: 1px solid #DCDCDC;
+    border-left: 1px solid #DCDCDC;
+    border-right: 1px solid #DCDCDC;
+
+}
+.btn_id button {
+    color: #9049c6;
+    width: 150px;
+    height: 50px;
+    font-size: large;
+    border: 0px;
+    background-color: white;
+
+}
+.btn_pw{
+    width: 150px;
+    height: 50px;
+    border: 1px solid #DCDCDC;
+
+
+}
+.btn_pw button {
+    width: 150px;
+    height: 50px;
+    font-size: large;
+    background-color: #f7f7f7;
+    color: #919191;
+    border: 0px;
+
+
+}
