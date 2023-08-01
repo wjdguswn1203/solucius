@@ -1,21 +1,27 @@
-import logo from './logo.svg';
 import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Login from './components/Login';
+import Home from './components/Home';
 import './App.css';
 
 import "primereact/resources/themes/lara-light-purple/theme.css";
 import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
-import {Button} from "primereact/button";
 
 function App() {
   return (
-    <div className="App">
-        <div className="flex flex-column md:flex-row justify-content-between my-5">
-            <Button type="button" label="Button 1" className="mb-3 md:mb-0"></Button>
-            <Button type="button" label="Button 2" className="p-button-secondary mb-3 md:mb-0"></Button>
-            <Button type="button" label="Button 3" className="p-button-help"></Button>
-        </div>
-    </div>
+      <Router>
+          <Routes>
+              {/* 로그인 페이지 */}
+              <Route path="/" element={<Login />} />
+
+              {/* 기타 페이지 */}
+              <Route path="/dashboard" element={<Home />} />
+              {/* 더 많은 페이지들을 여기에 추가할 수 있습니다. */}
+
+              {/* 로그인 이외의 경로일 경우 404 페이지 또는 리다이렉트 등을 처리할 수 있습니다. */}
+          </Routes>
+      </Router>
   );
 }
 
