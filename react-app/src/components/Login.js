@@ -1,30 +1,58 @@
 // src/components/LoginForm.js
-import React, {useState} from 'react';
-import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
+import { InputText } from 'primereact/inputtext';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { call } from "../service/ApiService";
 import './Login.css';
 
 
-import axios from 'axios';
-
 
 const Login = () => {
-    const [userid, setId] = useState('');
-    const [password, setPassword] = useState('');
+    const [userId, setUserId] = useState('');
+    const [userPw, setUserPw] = useState('');
     const navigate = useNavigate();
 
     const handleLogin = async (e) => {
         // 로그인 처리를 여기에 구현합니다.
-        console.log('Userid:', userid);
-        console.log('Password:', password);
+        console.log('Userid:', userId);
+        console.log('Password:', userPw);
             e.preventDefault();
             try {
                 // 로그인 폼
-                //const response = await axios.post('/api/login', { userid, password });
+                call("/login", "POST", {userId: userId, userPw: userPw})
+                    .then((res) => {
+                        if(res) {
+                            console.log(res);
+                            window.alert(`안녕하세요, ${res.userNm}님! 환영합니다!`);
+                            navigate('/dashboard');
+                        } else {
+                            // catch
+                            console.log(res);
+                        }
+                    });
+                // fetch('http://localhost:8080/login', {
+                //     headers: {
+                //         "Content-Type": "application/json",
+                //     },
+                //     method: "POST",
+                //     body: JSON.stringify({
+                //         userId: userId,
+                //         userPw: password
+                //     })
+                // })
+                // .then(response => response.json())
+                // .then(data => {
+                //     console.log(data);
+                //     window.alert(`안녕하세요, ${data.userNm}님! 환영합니다!`);
+                //     navigate('/dashboard');
+                // })
+                // .catch(error => {
+                //     // 에러 처리
+                // });                
+
+                //const response = await axios.post('/api/login', { userId, password });
                 // 로그인 성공 시, 메인 페이지로 이동하도록 처리합니다.
-                window.alert(`안녕하세요, ${userid}님! 환영합니다!`);
-                navigate('/dashboard');
             }
             catch (error) {
                     console.error('로그인 실패:', error);
@@ -54,8 +82,8 @@ const Login = () => {
               <i className="pi pi-user"></i>
             </span>
                 <InputText
-                    value={userid}
-                    onChange={(e) => setId(e.target.value)}
+                    value={userId}
+                    onChange={(e) => setUserId(e.target.value)}
                     placeholder="Id"
                 />
             </div>
@@ -64,8 +92,8 @@ const Login = () => {
               <i className="pi pi-lock"></i>
             </span>
                 <InputText
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                    value={userPw}
+                    onChange={(e) => setUserPw(e.target.value)}
                     type="password"
                     placeholder="Password"
                 />

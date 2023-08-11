@@ -1,26 +1,43 @@
 // src/components/LoginForm.js
-import React, {useState} from 'react';
-import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
-
+import { InputText } from 'primereact/inputtext';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './Login.css';
+import { call } from "../service/ApiService";
 import './Join.css';
+import './Login.css';
 
 const Join = () => {
-    const [userid, setId] = useState('');
-    const [password, setPassword] = useState('');
+    const [userId, setUserId] = useState('');
+    const [userPw, setUserPw] = useState('');
+    const [userNm, setUserNm] = useState('');
+    const [userEmail, setUserEmail] = useState('');
+
     const navigate = useNavigate();
 
     const handleJoin = async (e) => {
         // 로그인 처리를 여기에 구현합니다.
-        console.log('Userid:', userid);
-        console.log('Password:', password);
+        console.log('Userid:', userId);
+        console.log('Password:', userPw);
         e.preventDefault();
         try {
-
-            window.alert(`회원가입이 완료되었습니다.`);
-            navigate('/dashboard');
+            call("/signup", "POST",
+                {
+                    userId: userId, 
+                    userPw: userPw,
+                    userNm: userNm,
+                    userEmail: userEmail
+                })
+                .then((res) => {
+                    if(res) {
+                        console.log(res);
+                        window.alert(`회원가입이 완료되었습니다.`);
+                        navigate('/dashboard');
+                    } else {
+                        // catch
+                        console.log(res);
+                    }
+                });
         }
         catch (error) {
             console.error('회원가입 실패:', error);
@@ -41,28 +58,49 @@ const Join = () => {
                     <div className="card">
                         <div>
                             <div className="flex-auto">
-                                <label htmlFor="integer" className="font-bold block mb-2">
+                                <label className="font-bold block mb-2">
                                     아이디
                                 </label>
-                                <InputText id="userid" keyfilter="int" className="w-full" />
+                                <InputText
+                                    value={userId}
+                                    onChange={(e) => {
+                                        setUserId(e.target.value)
+                                    }}
+                                    id="userId" className="w-full"
+                                />
                             </div>
                             <div className="flex-auto">
-                                <label htmlFor="number" className="font-bold block mb-2">
+                                <label className="font-bold block mb-2">
                                     비밀번호
                                 </label>
-                                <InputText id="password" keyfilter="num" className="w-full" />
+                                <InputText 
+                                    value={userPw}
+                                    onChange={(e) => setUserPw(e.target.value)}
+                                    type="password"
+                                    id="password" className="w-full"
+                                />
                             </div>
                             <div className="flex-auto">
                                 <label htmlFor="money" className="font-bold block mb-2">
                                     이름
                                 </label>
-                                <InputText id="name" keyfilter="money" className="w-full" />
+                                <InputText 
+                                    value={userNm}
+                                    onChange={(e) => setUserNm(e.target.value)}
+                                    id="name" className="w-full"
+                                />
                             </div>
                             <div className="flex-auto">
                                 <label htmlFor="hex" className="font-bold block mb-2">
                                     이메일
                                 </label>
-                                <InputText id="email" keyfilter="hex" className="w-full" />
+                                <InputText
+                                    value={userEmail}
+                                    onChange={(e) => {
+                                        setUserEmail(e.target.value)
+                                    }}
+                                    id="email" className="w-full"
+                                />
                             </div>
                         </div>
                         <Button className="Join-btn" label="Login" onClick={handleJoin} />
